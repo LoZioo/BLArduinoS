@@ -65,6 +65,13 @@ namespace BLArduinoS {
 	float* copy(float *v, uint8_t m, uint8_t n);
 
 	/**
+	 * @brief Scalar multiplication R = kB.
+	 * @param A m x n matrix.
+	 * @return A pointer to the result.
+	 */
+	float* multiply(float k, float *A, uint8_t m, uint8_t n);
+
+	/**
 	 * @brief Matrix multiplication R = AB.
 	 * @param A m x n matrix.
 	 * @param B n x p matrix.

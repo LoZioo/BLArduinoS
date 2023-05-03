@@ -52,6 +52,16 @@ namespace BLArduinoS {
 		return arr;
 	}
 
+	float* multiply(float k, float *A, uint8_t m, uint8_t n = 1){
+		uint8_t dim = m*n;
+		float *arr = new float[dim];
+
+		for(uint8_t i=0; i<dim; i++)
+			arr[i] = k * A[i];
+
+		return arr;
+	}
+
 	float* matmul(float *A, float *B, uint8_t m, uint8_t n, uint8_t p = 1){
 		float *R = new float[m*p];
 
