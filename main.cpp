@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "BLArduinoS/BLArduinoS.h"
-#include "BLArduinoS/BLArduinoS.cpp"
+#include <BLArduinoS.h>
+#include <BLArduinoS.cpp>
 
 using namespace BLArduinoS;
 
