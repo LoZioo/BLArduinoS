@@ -5,7 +5,7 @@ T map(T x, T in_min, T in_max, T out_min, T out_max){
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-void BLArduinoS::matmul(const float *A, const float *B, float *R, uint8_t m, uint8_t n, uint8_t p = 1){
+float* BLArduinoS::matmul(const float *A, const float *B, float *R, uint8_t m, uint8_t n, uint8_t p = 1){
 	for(uint8_t i=0; i<m; i++){
 		for(uint8_t j=0; j<p; j++){
 			R[mtx(i,j,p)] = 0;
@@ -14,15 +14,18 @@ void BLArduinoS::matmul(const float *A, const float *B, float *R, uint8_t m, uin
 				R[mtx(i,j,p)] += A[mtx(i,k,n)] * B[mtx(k,j,p)];
 		}
 	}
+
+	return R;
 }
 
-void BLArduinoS::matmul(const float *A, const float *B, const float *C, float *R, uint8_t m, uint8_t n, uint8_t p, uint8_t q = 1){
+float* BLArduinoS::matmul(const float *A, const float *B, const float *C, float *R, uint8_t m, uint8_t n, uint8_t p, uint8_t q = 1){
 	float *AB = new float[m * p];
 
 	matmul(A, B, AB, m, n, p);
 	matmul(AB, C, R, m, p, q);
 
 	delete[] AB;
+	return R;
 }
 
 String BLArduinoS::toString(const float *A, uint8_t m, uint8_t n = 1){

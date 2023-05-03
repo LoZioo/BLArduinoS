@@ -38,7 +38,7 @@ namespace BLArduinoS {
 	 * @param B n x p matrix.
 	 * @param R m x p matrix.
 	 */
-	void matmul(const float *A, const float *B, float *R, uint8_t m, uint8_t n, uint8_t p);
+	float* matmul(const float *A, const float *B, float *R, uint8_t m, uint8_t n, uint8_t p);
 
 	/**
 	 * @brief Matrix multiplication R = ABC.
@@ -47,7 +47,7 @@ namespace BLArduinoS {
 	 * @param C p x q matrix.
 	 * @param R m x q matrix.
 	 */
-	void matmul(const float *A, const float *B, const float *C, float *R, uint8_t m, uint8_t n, uint8_t p, uint8_t q);
+	float* matmul(const float *A, const float *B, const float *C, float *R, uint8_t m, uint8_t n, uint8_t p, uint8_t q);
 
 	/// @brief Get a string representation of your vector or matrix.
 	String toString(const float *A, uint8_t m, uint8_t n);
