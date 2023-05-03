@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+export CPLUS_INCLUDE_PATH="BLArduinoS/"
+
 while true; do
 	clear && g++ main.cpp && ./a.out && rm a.out
 
