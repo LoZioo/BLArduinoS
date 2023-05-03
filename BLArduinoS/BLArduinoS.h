@@ -21,7 +21,15 @@
 
 #endif
 
-#define mtx(i,j,n) (i * n + j)
+/// @brief Range remap for any supported type.
+template <class T>
+T map(T x, T in_min, T in_max, T out_min, T out_max);
+
+/// @brief Value constrain.
+#define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+
+/// @brief Convert 2D matrix indexing to 1D array indexing.
+#define mtx(i,j,cols) (i*cols+j)
 
 namespace BLArduinoS {
 	/**
@@ -41,9 +49,6 @@ namespace BLArduinoS {
 	 */
 	void matmul(const float *A, const float *B, const float *C, float *R, uint8_t m, uint8_t n, uint8_t p, uint8_t q);
 
-	/// @brief Range remap for any supported type.
-	template <class T>
-	T map(T x, T in_min, T in_max, T out_min, T out_max);
-
+	/// @brief Get a string representation of your vector or matrix.
 	String toString(const float *A, uint8_t m, uint8_t n);
 }

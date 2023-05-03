@@ -1,5 +1,10 @@
 #include "BLArduinoS.h"
 
+template <class T>
+T map(T x, T in_min, T in_max, T out_min, T out_max){
+	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 void BLArduinoS::matmul(const float *A, const float *B, float *R, uint8_t m, uint8_t n, uint8_t p = 1){
 	for(uint8_t i=0; i<m; i++){
 		for(uint8_t j=0; j<p; j++){
@@ -18,11 +23,6 @@ void BLArduinoS::matmul(const float *A, const float *B, const float *C, float *R
 	matmul(AB, C, R, m, p, q);
 
 	delete[] AB;
-}
-
-template <class T>
-T BLArduinoS::map(T x, T in_min, T in_max, T out_min, T out_max){
-	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
 String BLArduinoS::toString(const float *A, uint8_t m, uint8_t n = 1){
