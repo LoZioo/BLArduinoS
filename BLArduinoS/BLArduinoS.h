@@ -9,12 +9,20 @@
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <string>
+#ifndef ARDUINO
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <stdint.h>
+	#include <string>
 
-#define String std::string
+	#define String std::string
+	#define dtostrf(value, width, precision, output) \
+		sprintf(output, "%*.*f", width, precision, value)
+
+#endif
+
+// Same as: const float (*M_mtx)[n] = (const float (*)[n]) M;
+#define mtx(M, cols) ((float (*)[n]) M)
 
 namespace BLAS {
 	/**
