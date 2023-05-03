@@ -21,8 +21,7 @@
 
 #endif
 
-// Same as: const float (*M_mtx)[n] = (const float (*)[n]) M;
-#define mtx(M, cols) ((float (*)[n]) M)
+#define mtx(i,j,n) (i * n + j)
 
 namespace BLAS {
 	/**

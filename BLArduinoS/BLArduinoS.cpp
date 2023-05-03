@@ -1,17 +1,17 @@
 #include "BLArduinoS.h"
 
-void BLAS::matmul(const float *A, const float *B, float *R, uint8_t m, uint8_t n, uint8_t p){
+void BLAS::matmul(const float *A, const float *B, float *R, uint8_t m, uint8_t n, uint8_t p = 1){
 	for(uint8_t i=0; i<m; i++){
 		for(uint8_t j=0; j<p; j++){
-			mtx(R,p)[i][j] = 0.0;
+			R[mtx(i,j,p)] = 0;
 
 			for(uint8_t k=0; k<n; k++)
-				mtx(R,p)[i][j] += mtx(A,n)[i][k] * mtx(B,p)[k][j];
+				R[mtx(i,j,p)] += A[mtx(i,k,n)] * B[mtx(k,j,p)];
 		}
 	}
 }
 
-void BLAS::matmul(const float *A, const float *B, const float *C, float *R, uint8_t m, uint8_t n, uint8_t p, uint8_t q){
+void BLAS::matmul(const float *A, const float *B, const float *C, float *R, uint8_t m, uint8_t n, uint8_t p, uint8_t q = 1){
 	float *AB = new float[m * p];
 
 	BLAS::matmul(A, B, AB, m, n, p);
@@ -33,7 +33,7 @@ String BLAS::toString(const float *A, uint8_t m, uint8_t n = 1){
 		ret += "[ ";
 
 		for(uint8_t j=0; j<n; j++){
-			dtostrf(mtx(A,n)[i][j], 13, 7, buf);
+			dtostrf(A[mtx(i,j,n)], 13, 7, buf);
 
 			ret += buf;
 			ret += '\t';
