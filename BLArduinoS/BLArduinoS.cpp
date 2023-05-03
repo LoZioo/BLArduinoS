@@ -6,6 +6,10 @@ T map(T x, T in_min, T in_max, T out_min, T out_max){
 }
 
 namespace BLArduinoS {
+	void destroy(float *A){
+		delete[] A;
+	}
+
 	float* array(uint8_t m, uint8_t n = 1){
 		return new float[m*n];
 	}
@@ -28,10 +32,6 @@ namespace BLArduinoS {
 		return full(1, m, n);
 	}
 
-	void destroy(float *A){
-		delete[] A;
-	}
-
 	float* append(float *u, float *v, uint8_t m, uint8_t n){
 		float *arr = new float[m+n];
 
@@ -41,6 +41,14 @@ namespace BLArduinoS {
 		for(uint8_t i=0; i<n; i++)
 			arr[m+i] = v[i];
 
+		return arr;
+	}
+
+	float* copy(float *v, uint8_t m, uint8_t n = 1){
+		uint8_t dim = m*n;
+		float *arr = new float[dim];
+
+		std::memcpy(arr, v, dim * sizeof(float));
 		return arr;
 	}
 

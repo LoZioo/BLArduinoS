@@ -8,11 +8,11 @@ using namespace BLArduinoS;
 
 int main(){
 	float *A = full(2, 3);
-	float *B = ones(3);
+	float *B = copy(A, 3);
 	
-	float *C = append(A, B, 3, 3);
+	// float *C = append(A, B, 3, 3);
 
-	print(C, 6);
+	print(A, 3);
 
 	// printf("----------| A |----------\n");
 	// printf("%s\n", toString(A, 3, 3).c_str());
