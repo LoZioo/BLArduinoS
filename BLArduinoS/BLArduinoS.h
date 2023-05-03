@@ -23,7 +23,7 @@
 
 #define mtx(i,j,n) (i * n + j)
 
-namespace BLAS {
+namespace BLArduinoS {
 	/**
 	 * @brief Matrix multiplication R = AB.
 	 * @param A m x n matrix.
