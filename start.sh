@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 while true; do
-	clear && g++ main.cpp && ./a.out
+	clear && g++ main.cpp && ./a.out && rm a.out
 
 	echo "\nHit a key to continue or ESC to exit..."
 	read -skrn 1 key
