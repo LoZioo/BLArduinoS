@@ -62,6 +62,24 @@ namespace BLArduinoS {
 		return arr;
 	}
 
+	float* sum(float *A, float *B, uint8_t m, uint8_t n = 1){
+		uint8_t dim = m*n;
+		float *R = new float[dim];
+
+		for(uint8_t i=0; i<dim; i++)
+			R[i] = A[i] + B[i];
+
+		return R;
+	}
+
+	float* sum(float *A, float *B, float *C, uint8_t m, uint8_t n = 1){
+		float *AB = sum(A, B, m, n);
+		float *R = sum(AB, C, m, n);
+
+		destroy(AB);
+		return R;
+	}
+
 	float* matmul(float *A, float *B, uint8_t m, uint8_t n, uint8_t p = 1){
 		float *R = new float[m*p];
 
@@ -78,11 +96,8 @@ namespace BLArduinoS {
 	}
 
 	float* matmul(float *A, float *B, float *C, uint8_t m, uint8_t n, uint8_t p, uint8_t q = 1){
-		float *R = new float[m*q];
-		float *AB = new float[m*p];
-
-		matmul(A, B, AB, m, n, p);
-		matmul(AB, C, R, m, p, q);
+		float *AB = matmul(A, B, AB, m, n, p);
+		float *R = matmul(AB, C, R, m, p, q);
 
 		destroy(AB);
 		return R;
@@ -110,7 +125,7 @@ namespace BLArduinoS {
 
 	void print(float *A, uint8_t m, uint8_t n = 1, uint8_t width = 13, uint8_t precision = 7){
 		String str = toString(A, m, n, width, precision);
-		
+
 		#ifdef ARDUINO
 			Serial.println(str);
 

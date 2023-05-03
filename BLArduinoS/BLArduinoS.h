@@ -38,6 +38,8 @@ T map(T x, T in_min, T in_max, T out_min, T out_max);
 
 // IMPORTANT: YOU MUST MANUALLY FREE YOUR ALLOCATED MEMORY ON YOUR UNUSED POINTERS BY CALLING THE destroy() FUNCTION!
 namespace BLArduinoS {
+	// ------------------------------| Allocation |------------------------------
+
 	/// @brief Free the allocated memory.
 	void destroy(float *A);
 
@@ -64,19 +66,39 @@ namespace BLArduinoS {
 	/// @return A copy of the array.
 	float* copy(float *v, uint8_t m, uint8_t n);
 
+	// ------------------------------| Operators (Scalar and Matrix) |------------------------------
+
 	/**
 	 * @brief Scalar multiplication R = kB.
 	 * @param A m x n matrix.
-	 * @return A pointer to the result.
+	 * @return A pointer to the result (m x n).
 	 */
 	float* multiply(float k, float *A, uint8_t m, uint8_t n);
+
+	// ------------------------------| Operators (Matrix and Matrix) |------------------------------
+
+	/**
+	 * @brief Matrix sum R = A+B.
+	 * @param A m x n matrix.
+	 * @param B m x n matrix.
+	 * @return A pointer to the result (m x n).
+	 */
+	float* sum(float *A, float *B, uint8_t m, uint8_t n);
+
+	/**
+	 * @brief Matrix sum R = A+B+C.
+	 * @param A m x n matrix.
+	 * @param B m x n matrix.
+	 * @param C m x n matrix.
+	 * @return A pointer to the result (m x n).
+	 */
+	float* sum(float *A, float *B, float *C, uint8_t m, uint8_t n);
 
 	/**
 	 * @brief Matrix multiplication R = AB.
 	 * @param A m x n matrix.
 	 * @param B n x p matrix.
-	 * @param R m x p matrix.
-	 * @return A pointer to the result.
+	 * @return A pointer to the result (m x p).
 	 */
 	float* matmul(float *A, float *B, uint8_t m, uint8_t n, uint8_t p);
 
@@ -85,10 +107,11 @@ namespace BLArduinoS {
 	 * @param A m x n matrix.
 	 * @param B n x p matrix.
 	 * @param C p x q matrix.
-	 * @param R m x q matrix.
-	 * @return A pointer to the result.
+	 * @return A pointer to the result (m x q).
 	 */
 	float* matmul(float *A, float *B, float *C, uint8_t m, uint8_t n, uint8_t p, uint8_t q);
+
+	// ------------------------------| Output |------------------------------
 
 	/// @brief Get a string representation of your array or matrix.
 	String toString(float *A, uint8_t m, uint8_t n, uint8_t width, uint8_t precision);
