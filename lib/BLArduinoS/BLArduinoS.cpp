@@ -195,7 +195,7 @@ namespace BLArduinoS {
 		float alg_comp = ( (i+j) % 2 == 0 ? 1 : -1 ) * det2(minor);
 		destroy(minor);
 
-		return alg_comp;
+		return (alg_comp == -0.0 ? 0 : alg_comp);
 	}
 
 	float det2(float *A){
