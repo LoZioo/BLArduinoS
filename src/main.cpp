@@ -16,5 +16,9 @@ int main(){
 	bl::print(A, 3, 3);
 	bl::print(bl::inv3(A), 3, 3);
 
+	float *I = bl::identity(3);
+	bl::print(I, 3, 3);
+	bl::print(bl::inv3(I), 3, 3);
+
 	bl::destroyAll();
 }

@@ -74,6 +74,9 @@ namespace BLArduinoS {
 	/// @return Array full of ones.
 	float* ones(uint8_t m, uint8_t n);
 
+	/// @return The identity matrix (n x n).
+	float* identity(uint8_t n);
+
 	/**
 	 * @brief Append v to u.
 	 * @param u array long m.

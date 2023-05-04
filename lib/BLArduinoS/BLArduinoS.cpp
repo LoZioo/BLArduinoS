@@ -85,6 +85,15 @@ namespace BLArduinoS {
 		return full(1, m, n);
 	}
 
+	float* identity(uint8_t n = 1){
+		float *id = zeros(n, n);
+
+		for(uint8_t i=0; i<n; i++)
+			id[mtx(i,i,n)] = 1;
+
+		return id;
+	}
+
 	float* append(float *u, float *v, uint8_t m, uint8_t n){
 		float *arr = array(m+n);
 
