@@ -165,6 +165,21 @@ namespace BLArduinoS {
 		return R;
 	}
 
+	float algebric_complement3(const float *A, uint8_t i, uint8_t j){
+		float *minor = array(2, 2);
+
+		uint8_t minor_index = 0;
+		for(uint8_t h=0; h<3; h++)
+			for(uint8_t k=0; k<3; k++)
+				if(h != i && k != j)
+					minor[minor_index++] = A[mtx(h,k,3)];
+
+		float alg_comp = ( (i+j) % 2 == 0 ? 1 : -1 ) * det2(minor);
+		destroy(minor);
+
+		return alg_comp;
+	}
+
 	float det2(float *A){
 		return A[mtx(0,0,2)] * A[mtx(1,1,2)] - A[mtx(0,1,2)] * A[mtx(1,0,2)];
 	}

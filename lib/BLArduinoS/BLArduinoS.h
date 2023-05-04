@@ -133,6 +133,12 @@ namespace BLArduinoS {
 	float* transponse(float *A, uint8_t m, uint8_t n);
 
 	/**
+	 * @brief The algebric complement of the element (i,j).
+	 * @param A 3 x 3 matrix. 
+	 */
+	float algebric_complement3(const float *A, uint8_t i, uint8_t j);
+
+	/**
 	 * @param A 2 x 2 Matrix.
 	 * @return det(A).
 	 */
