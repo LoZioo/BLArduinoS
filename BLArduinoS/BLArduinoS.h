@@ -1,7 +1,7 @@
 /**
  * @file BLArduinoS.h
  * @author Davide Scalisi
- * @brief BLAS (Basic Linear Algebra Subroutines) minimal implementation for embedded devices.
+ * @brief Very simple BLAS (Basic Linear Algebra Subroutines) implementation for embedded devices inspired by the numpy library.
  * @version 0.1
  * @date 2023-04-27
  *
@@ -26,6 +26,9 @@
 
 #endif
 
+// Max number of saved pointers.
+#define POINTERS_BUFFER_MAXLEN 50
+
 /// @brief Range remap for any supported type.
 template<class T>
 T map(T x, T in_min, T in_max, T out_min, T out_max);
@@ -36,12 +39,26 @@ T map(T x, T in_min, T in_max, T out_min, T out_max);
 /// @brief Convert 2D matrix indexing to 1D array indexing.
 #define mtx(i,j,cols) (i*cols+j)
 
-// IMPORTANT: YOU MUST MANUALLY FREE YOUR ALLOCATED MEMORY ON YOUR UNUSED POINTERS BY CALLING THE destroy() FUNCTION!
+// IMPORTANT: you must manually free the allocated memory on your unused pointers by calling destroy() or destroyAll()!
 namespace BLArduinoS {
-	// ------------------------------| Allocation |------------------------------
+	// ------------------------------| Internal functions |------------------------------
+	extern float *ptrs[];
+	extern uint8_t ptrs_index;
 
-	/// @brief Free the allocated memory.
-	void destroy(float *A);
+	void __save_ptr(float *ptr, uint8_t len);
+
+	// ------------------------------| Memory |------------------------------
+
+	/// @brief Free the allocated memory (m and n are needed just to keep track of the used memory, so  they're optional parameters).
+	void destroy(float *A, uint8_t m, uint8_t n);
+
+	/// @brief Free all the allocated memory; all previously saved pointers won't be semantically valid anymore.
+	void destroyAll();
+
+	/// @brief Get allocated memory in bytes (destroy() calls do not decrement this unless you specify the matrix dimensions).
+	uint16_t getUsedMemory();
+
+	// ------------------------------| Initialization |------------------------------
 
 	/// @return Uninitialized array.
 	float* array(uint8_t m, uint8_t n);

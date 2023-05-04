@@ -6,13 +6,26 @@
 using namespace BLArduinoS;
 
 int main(){
-	float *A = full(2, 2, 3);
-	float *B = full(6, 2, 3);
-	float *C = sum(A, B, 2, 3);
+	printf("used: %d\n", getUsedMemory());
 
-	print(A, 2, 3);
-	print(B, 2, 3);
-	print(C, 2, 3);
+	float *A = full(2, 3, 3);
+	printf("used: %d\n", getUsedMemory());
+
+	float *B = full(6, 3, 3);
+	printf("used: %d\n", getUsedMemory());
+
+	float *C = full(4, 3, 3);
+	printf("used: %d\n", getUsedMemory());
+
+	float *D = matmul(A, B, C, 2, 2, 2, 2);
+
+	print(A, 2, 2);
+	print(B, 2, 2);
+	print(C, 2, 2);
+	print(D, 2, 2);
+
+	destroyAll();
+	printf("used: %d\n", getUsedMemory());
 
 	return 0;
 }
