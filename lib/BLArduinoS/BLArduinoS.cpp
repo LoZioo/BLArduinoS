@@ -160,6 +160,14 @@ namespace BLArduinoS {
 	}
 
 	float det3(float *A){
+		return (
+			(A[mtx(0,0,3)] * A[mtx(1,1,3)] * A[mtx(2,2,3)]) +
+			(A[mtx(0,1,3)] * A[mtx(1,2,3)] * A[mtx(2,0,3)]) +
+			(A[mtx(0,2,3)] * A[mtx(1,0,3)] * A[mtx(2,1,3)]) -
+			(A[mtx(0,0,3)] * A[mtx(1,2,3)] * A[mtx(2,1,3)]) -
+			(A[mtx(0,1,3)] * A[mtx(1,0,3)] * A[mtx(2,2,3)]) -
+			(A[mtx(0,2,3)] * A[mtx(1,1,3)] * A[mtx(2,0,3)])
+		);
 	}
 
 	String toString(float *A, uint8_t m, uint8_t n = 1, uint8_t width = 13, uint8_t precision = 7){
