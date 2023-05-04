@@ -165,6 +165,10 @@ namespace BLArduinoS {
 		return R;
 	}
 
+	float algebric_complement2(const float *A, uint8_t i, uint8_t j){
+		return A[mtx(1-i,1-j,2)];
+	}
+
 	float algebric_complement3(const float *A, uint8_t i, uint8_t j){
 		float *minor = array(2, 2);
 

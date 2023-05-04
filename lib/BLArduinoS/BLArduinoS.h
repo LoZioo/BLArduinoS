@@ -35,7 +35,7 @@ T map(T x, T in_min, T in_max, T out_min, T out_max);
 #define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
 
 /// @brief Convert 2D matrix indexing to 1D array indexing.
-#define mtx(i,j,cols) (i*cols+j)
+#define mtx(i,j,cols) ((i)*(cols)+(j))
 
 // IMPORTANT: you must manually free the allocated memory on your unused pointers by calling destroy() or destroyAll()!
 namespace BLArduinoS {
@@ -131,6 +131,12 @@ namespace BLArduinoS {
 
 	/// @return Compute the transposed matrix (n x m).
 	float* transponse(float *A, uint8_t m, uint8_t n);
+
+	/**
+	 * @brief The algebric complement of the element (i,j).
+	 * @param A 2 x 2 matrix. 
+	 */
+	float algebric_complement2(const float *A, uint8_t i, uint8_t j);
 
 	/**
 	 * @brief The algebric complement of the element (i,j).
