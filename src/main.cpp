@@ -12,7 +12,7 @@ int main(){
 	A[mtx(1,1,2)] = 5;
 
 	print(A, 3, 3);
-	printf("%f\n", algebric_complement3(A, 0, 1));
+	print(inv3(A), 3, 3);
 
 	destroyAll();
 }

@@ -195,6 +195,27 @@ namespace BLArduinoS {
 		);
 	}
 
+	float* inv3(float *A){
+		float d = det3(A);
+
+		if(d == 0)
+			return NULL;
+
+		// Algebric complements matrix.
+		float *alg_complements = array(3, 3);
+		for(uint8_t i=0; i<3; i++)
+			for(uint8_t j=0; j<3; j++)
+				alg_complements[mtx(i,j,3)] = algebric_complement3(A, i, j);
+
+		float *alg_complements_t = transponse(alg_complements, 3, 3);
+		destroy(alg_complements);
+
+		float *inv = multiply(1 / d, alg_complements_t, 3, 3);
+		destroy(alg_complements_t);
+
+		return inv;
+	}
+
 	String toString(float *A, uint8_t m, uint8_t n = 1, uint8_t width = 13, uint8_t precision = 7){
 		String ret = "";
 		char buf[14];

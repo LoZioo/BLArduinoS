@@ -129,7 +129,7 @@ namespace BLArduinoS {
 
 	// ------------------------------| Linear algebra |------------------------------
 
-	/// @return The transposed matrix (n x m).
+	/// @return Compute the transposed matrix (n x m).
 	float* transponse(float *A, uint8_t m, uint8_t n);
 
 	/**
@@ -145,10 +145,16 @@ namespace BLArduinoS {
 	float det2(float *A);
 
 	/**
-	 * @param A 2 x 2 Matrix.
+	 * @param A 3 x 3 Matrix.
 	 * @return det(A).
 	 */
 	float det3(float *A);
+
+	/**
+	 * @brief Compute the inverse matrix (3 x 3).
+	 * @param A 3 x 3 matrix. 
+	 */
+	float* inv3(float *A);
 
 	// ------------------------------| Output |------------------------------
 
