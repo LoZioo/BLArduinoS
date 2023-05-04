@@ -1,9 +1,10 @@
 #!/bin/zsh
 
-export CPLUS_INCLUDE_PATH="BLArduinoS/"
+mkdir build
+cd build
 
 while true; do
-	clear && g++ main.cpp && ./a.out && rm a.out
+	clear && cmake .. && make && echo && ./main
 
 	echo "\nHit a key to continue or ESC to exit..."
 	read -skrn 1 key

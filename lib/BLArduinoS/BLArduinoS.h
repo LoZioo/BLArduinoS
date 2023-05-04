@@ -22,8 +22,6 @@
 	#define dtostrf(value, width, precision, output) \
 		sprintf(output, "%*.*f", width, precision, value)
 
-	#define Serial.println(str) (printf("%s\n", str))
-
 #endif
 
 // Max number of saved pointers.
