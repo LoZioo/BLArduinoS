@@ -155,6 +155,17 @@ namespace BLArduinoS {
 		return R;
 	}
 
+	float* transponse(float *A, uint8_t m, uint8_t n = 1){
+		float *R = array(m, n);
+
+		for(uint8_t i=0; i<m; i++)
+			for(uint8_t j=0; j<n; j++)
+				R[mtx(j,i,m)] = A[mtx(i,j,n)];
+				// A_T_mtx[j][i] = A_mtx[i][j];
+
+		return R;
+	}
+
 	float det2(float *A){
 		return A[mtx(0,0,2)] * A[mtx(1,1,2)] - A[mtx(0,1,2)] * A[mtx(1,0,2)];
 	}

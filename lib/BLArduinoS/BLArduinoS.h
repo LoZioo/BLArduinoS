@@ -129,6 +129,9 @@ namespace BLArduinoS {
 
 	// ------------------------------| Linear algebra |------------------------------
 
+	/// @return The transposed matrix (n x m).
+	float* transponse(float *A, uint8_t m, uint8_t n);
+
 	/**
 	 * @param A 2 x 2 Matrix.
 	 * @return det(A).
