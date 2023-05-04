@@ -115,12 +115,12 @@ namespace BLArduinoS {
 		uint8_t dim = m*n;
 		float *arr = array(dim);
 
-		std::memcpy(arr, v, dim * sizeof(float));
+		memcpy(arr, v, dim * sizeof(float));
 		return arr;
 	}
 
 	void move(float *u, float *v, uint8_t m, uint8_t n = 1){
-		std::memcpy(u, v, m * n * sizeof(float));
+		memcpy(u, v, m * n * sizeof(float));
 		destroy(v);
 	}
 

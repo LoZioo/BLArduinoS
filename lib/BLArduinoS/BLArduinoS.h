@@ -9,7 +9,10 @@
  *
  */
 
-#ifndef ARDUINO
+#ifdef ARDUINO
+	#include <Arduino.h>
+
+#else
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include <stdint.h>
@@ -17,7 +20,8 @@
 	#include <cstring>
 	#include <string>
 
-	#define String std::string
+	using namespace std;
+	#define String string
 
 	#define dtostrf(value, width, precision, output) \
 		sprintf(output, "%*.*f", width, precision, value)
