@@ -161,7 +161,6 @@ namespace BLArduinoS {
 		for(uint8_t i=0; i<m; i++)
 			for(uint8_t j=0; j<n; j++)
 				R[mtx(j,i,m)] = A[mtx(i,j,n)];
-				// A_T_mtx[j][i] = A_mtx[i][j];
 
 		return R;
 	}
