@@ -91,8 +91,15 @@ namespace BLArduinoS {
 	 */
 	float* append(float *u, float *v, uint8_t m, uint8_t n);
 
-	/// @return A copy of the array.
+	/// @return Make a copy of the array.
 	float* copy(float *v, uint8_t m, uint8_t n);
+
+	/**
+	 * @brief Copy v to u (u already allocated by the caller) and free the v allocatad memory.
+	 * @param u User allocated memory (MUST be already allocated).
+	 * @param v Library allocated memory.
+	 */
+	void move(float *u, float *v, uint8_t m, uint8_t n);
 
 	// ------------------------------| Operators (Scalar and Matrix) |------------------------------
 
