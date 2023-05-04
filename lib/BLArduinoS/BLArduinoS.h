@@ -22,6 +22,9 @@
 	#define dtostrf(value, width, precision, output) \
 		sprintf(output, "%*.*f", width, precision, value)
 
+	/// @brief Value constrain.
+	#define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+
 #endif
 
 // Max number of saved pointers.
@@ -31,8 +34,11 @@
 template<class T>
 T map(T x, T in_min, T in_max, T out_min, T out_max);
 
-/// @brief Value constrain.
-#define constrain(amt,low,high) ((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+/**
+ * @brief Modulo operator (https://stackoverflow.com/questions/11720656/modulo-operation-with-negative-numbers).
+ * @return a mod b
+ */
+int mod(int a, int b);
 
 /// @brief Convert 2D matrix indexing to 1D array indexing.
 #define mtx(i,j,cols) ((i)*(cols)+(j))

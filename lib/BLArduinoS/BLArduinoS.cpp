@@ -5,6 +5,11 @@ T map(T x, T in_min, T in_max, T out_min, T out_max){
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
+int mod(int a, int b){
+	int r = a % b;
+	return r < 0 ? r + b : r;
+}
+
 namespace BLArduinoS {
 	float *__ptrs[POINTERS_BUFFER_MAXLEN];
 	uint8_t __ptrs_index = 0;
