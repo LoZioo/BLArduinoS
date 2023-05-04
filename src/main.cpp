@@ -3,15 +3,18 @@
 #include <BLArduinoS.h>
 #include <BLArduinoS.cpp>
 
-using namespace BLArduinoS;
+// using namespace BLArduinoS;
+namespace bl = BLArduinoS;
 
 int main(){
-	float *A = ones(2, 2);
-	A[mtx(0,0,2)] = 10;
-	A[mtx(1,1,2)] = 5;
+	float *A = bl::from(new float[9]{
+		10, 1, 1,
+		1, 5, 1,
+		1, 1, 1,
+	}, 9);
 
-	print(A, 2, 2);
-	printf("%f\n", algebric_complement2(A, 1, 1));
+	bl::print(A, 3, 3);
+	bl::print(bl::inv3(A), 3, 3);
 
-	destroyAll();
+	bl::destroyAll();
 }

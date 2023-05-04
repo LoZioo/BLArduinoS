@@ -62,6 +62,11 @@ namespace BLArduinoS {
 		return arr;
 	}
 
+	float* from(float *A, uint8_t m, uint8_t n = 1){
+		__save_ptr(A, m*n);
+		return A;
+	}
+
 	float* full(float val, uint8_t m, uint8_t n = 1){
 		uint8_t dim = m*n;
 		float *arr = array(dim);

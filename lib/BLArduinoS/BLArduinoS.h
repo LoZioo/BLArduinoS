@@ -62,12 +62,15 @@ namespace BLArduinoS {
 	/// @return Uninitialized array.
 	float* array(uint8_t m, uint8_t n);
 
+	/// @brief Register a new pointer in the internal memory manager.
+	float* from(float *A, uint8_t m, uint8_t n);
+
 	/// @return Array full of the specified vals.
 	float* full(float val, uint8_t m, uint8_t n);
 
 	/// @return Array full of zeros.
 	float* zeros(uint8_t m, uint8_t n);
-	
+
 	/// @return Array full of ones.
 	float* ones(uint8_t m, uint8_t n);
 
@@ -134,13 +137,13 @@ namespace BLArduinoS {
 
 	/**
 	 * @brief The algebric complement of the element (i,j).
-	 * @param A 2 x 2 matrix. 
+	 * @param A 2 x 2 matrix.
 	 */
 	float algebric_complement2(const float *A, uint8_t i, uint8_t j);
 
 	/**
 	 * @brief The algebric complement of the element (i,j).
-	 * @param A 3 x 3 matrix. 
+	 * @param A 3 x 3 matrix.
 	 */
 	float algebric_complement3(const float *A, uint8_t i, uint8_t j);
 
@@ -158,7 +161,7 @@ namespace BLArduinoS {
 
 	/**
 	 * @brief Compute the inverse matrix (3 x 3).
-	 * @param A 3 x 3 matrix. 
+	 * @param A 3 x 3 matrix.
 	 */
 	float* inv3(float *A);
 
