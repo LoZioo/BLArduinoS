@@ -17,16 +17,16 @@ namespace BLArduinoS {
 
 	int16_t __find_ptr_index(float *ptr){
 		bool found = false;
-		uint8_t i = 0;
+		uint8_t i = __ptrs_index - 1;
 
-		while(i<__ptrs_index && !found){
+		while(i>=0 && !found){
 			if(__ptrs[i] == ptr)
 				found = true;
 
-			i++;
+			i--;
 		}
 
-		return found ? i - 1 : -1 ;
+		return found ? i + 1 : -1 ;
 	}
 
 	void destroy(float *A, uint8_t m = 0, uint8_t n = 1){

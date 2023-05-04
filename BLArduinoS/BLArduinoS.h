@@ -46,6 +46,7 @@ namespace BLArduinoS {
 	extern uint8_t ptrs_index;
 
 	void __save_ptr(float *ptr, uint8_t len);
+	int16_t __find_ptr_index(float *ptr);
 
 	// ------------------------------| Memory |------------------------------
 
