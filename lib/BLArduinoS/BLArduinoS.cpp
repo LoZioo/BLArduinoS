@@ -155,6 +155,13 @@ namespace BLArduinoS {
 		return R;
 	}
 
+	float det2(float *A){
+		return A[mtx(0,0,2)] * A[mtx(1,1,2)] - A[mtx(0,1,2)] * A[mtx(1,0,2)];
+	}
+
+	float det3(float *A){
+	}
+
 	String toString(float *A, uint8_t m, uint8_t n = 1, uint8_t width = 13, uint8_t precision = 7){
 		String ret = "";
 		char buf[14];

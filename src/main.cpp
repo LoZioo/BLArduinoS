@@ -6,26 +6,12 @@
 using namespace BLArduinoS;
 
 int main(){
-	printf("used: %d\n", getUsedMemory());
-
-	float *A = full(2, 3, 3);
-	printf("used: %d\n", getUsedMemory());
-
-	float *B = full(6, 3, 3);
-	printf("used: %d\n", getUsedMemory());
-
-	float *C = full(4, 3, 3);
-	printf("used: %d\n", getUsedMemory());
-
-	float *D = matmul(A, B, C, 2, 2, 2, 2);
+	float *A = full(2, 2, 2);
+	A[mtx(0,0,2)] = 10;
 
 	print(A, 2, 2);
-	print(B, 2, 2);
-	print(C, 2, 2);
-	print(D, 2, 2);
+	printf("%f\n", det2(A));
 
 	destroyAll();
-	printf("used: %d\n", getUsedMemory());
-
 	return 0;
 }

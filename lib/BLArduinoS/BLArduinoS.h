@@ -127,6 +127,20 @@ namespace BLArduinoS {
 	 */
 	float* matmul(float *A, float *B, float *C, uint8_t m, uint8_t n, uint8_t p, uint8_t q);
 
+	// ------------------------------| Linear algebra |------------------------------
+
+	/**
+	 * @param A 2 x 2 Matrix.
+	 * @return det(A).
+	 */
+	float det2(float *A);
+
+	/**
+	 * @param A 2 x 2 Matrix.
+	 * @return det(A).
+	 */
+	float det3(float *A);
+
 	// ------------------------------| Output |------------------------------
 
 	/// @brief Get a string representation of your array or matrix.
